@@ -1,5 +1,5 @@
 {
-  "name": "@click/clickui",
+  "name": "@clickpick/clickui",
   "version": "0.1.0",
   "description": "clickui library",
   "main": "dist/clickui.js",
