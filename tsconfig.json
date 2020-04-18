@@ -6,6 +6,9 @@
             "dom.iterable",
             "esnext"
         ],
+        "declaration": true,
+        "declarationDir": "./dist",
+        "outDir": "./dist",
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -21,5 +24,11 @@
     },
     "include": [
         "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "rollup.config.js",
+        "src/**/*.(test|stories).(tsx|ts)"
     ]
 }
