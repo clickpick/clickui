@@ -1,10 +1,11 @@
 {
   "name": "@clickpick/clickui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "clickui library",
   "main": "dist/clickui.js",
   "module": "dist/clickui.es.js",
   "jsnext:main": "dist/clickui.es.js",
+  "typings": "dist/index",
   "license": "MIT",
   "repository": "https://github.com/clickpick/clickui",
   "scripts": {
