@@ -6,6 +6,7 @@
   "module": "dist/clickui.es.js",
   "jsnext:main": "dist/clickui.es.js",
   "license": "MIT",
+  "repository": "https://github.com/clickpick/clickui",
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c",
@@ -14,6 +15,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -62,5 +64,7 @@
     "typescript": "^3.8.3",
     "webpack-blocks": "^2.0.1"
   },
-  "dependencies": {}
+  "files": [
+    "dist"
+  ]
 }
