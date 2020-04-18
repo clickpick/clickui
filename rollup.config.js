@@ -38,7 +38,7 @@ export default {
         typescript({
             rollupCommonJSResolveHack: true,
             clean: true,
-            exclude: ['src/**/*(test|stories).(tsx|ts)']
+            exclude: ['src/**/*.(test|stories).(tsx|ts)'],
         }),
         commonjs()
     ]
