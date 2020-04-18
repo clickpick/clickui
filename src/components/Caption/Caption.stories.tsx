@@ -12,7 +12,7 @@ storiesOf('Caption', module)
             text: `
             ### Notes
 
-            Simple example component
+            Simple Caption component
 
             ### Usage
             ~~~ts
