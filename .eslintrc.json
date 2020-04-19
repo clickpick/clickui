@@ -1,4 +1,8 @@
 {
+    "ignorePatterns": [
+        "node_modules/",
+        "dist/"
+    ],
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "react-app"
