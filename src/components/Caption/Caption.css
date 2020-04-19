@@ -1,3 +1,5 @@
 .Caption {
-    color: #000;
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-regular);
+    line-height: 16px;
 }
