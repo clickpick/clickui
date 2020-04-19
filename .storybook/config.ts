@@ -4,6 +4,8 @@ import { addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 
+import '../dist/clickui.css';
+
 // automatically import all files ending in *.stories.tsx
 const req = require.context('../src', true, /\.stories\.tsx$/);
 
