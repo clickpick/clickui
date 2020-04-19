@@ -34,11 +34,11 @@ export default {
             plugins: [
                 postcssImport(),
                 cssnano()
-            ]
-            // modules: false,
-            // extract: true,
-            // minimize: false,
-            // sourceMap: false
+            ],
+            modules: false,
+            extract: true,
+            minimize: true,
+            sourceMap: false
         }),
         url(),
         svgr(),
