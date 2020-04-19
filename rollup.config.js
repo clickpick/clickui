@@ -10,6 +10,7 @@ import pkg from './package.json';
 
 // postcss plugins
 import postcssImport from 'postcss-import';
+import cssnano from 'cssnano';
 
 export default {
     input: 'src/index.ts',
@@ -31,7 +32,8 @@ export default {
         external(),
         postcss({
             plugins: [
-                postcssImport()
+                postcssImport(),
+                cssnano()
             ]
             // modules: false,
             // extract: true,
