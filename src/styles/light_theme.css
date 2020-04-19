@@ -2,4 +2,20 @@ body[scheme="client_light"],
 body[scheme="bright_light"] {
     /* Brand */
     --primary: #456BF1;
+    --secondary: color(#456BF1 alpha(10%));
+
+    /* OnSurface */
+    --os-primary: color(black alpha(90%));
+    --os-secondary: color(black alpha(60%));
+    --os-tertiary: color(black alpha(30%));
+
+    /* OnPrimary */
+    --op-primary: #FFF;
+    --oo-secondary: color(white alpha(70%));
+
+     /* Helpers */
+    --error: #E12F2F;
+    --error-secondary: color(#E12F2F alpha(10%));
+    --success: #3FA44B;
+    --success-secondary: color(#3FA44B alpha(10%));
 }
