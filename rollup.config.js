@@ -10,6 +10,7 @@ import pkg from './package.json';
 
 // postcss plugins
 import postcssImport from 'postcss-import';
+import cssnext from 'postcss-cssnext';
 import cssnano from 'cssnano';
 
 export default {
@@ -33,6 +34,14 @@ export default {
         postcss({
             plugins: [
                 postcssImport(),
+                cssnext({
+                    features: {
+                        customProperties: {
+                            warnings: process.env.NODE_ENV === 'development'
+                        },
+                    },
+                    warnForDuplicates: false
+                }),
                 cssnano()
             ],
             modules: false,
