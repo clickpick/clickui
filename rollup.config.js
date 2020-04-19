@@ -8,6 +8,9 @@ import svgr from '@svgr/rollup';
 
 import pkg from './package.json';
 
+// postcss plugins
+import postcssImport from 'postcss-import';
+
 export default {
     input: 'src/index.ts',
     output: [
@@ -27,10 +30,13 @@ export default {
     plugins: [
         external(),
         postcss({
-            modules: false,
-            extract: true,
-            minimize: true,
-            sourceMap: true
+            plugins: [
+                postcssImport()
+            ]
+            // modules: false,
+            // extract: true,
+            // minimize: false,
+            // sourceMap: false
         }),
         url(),
         svgr(),
