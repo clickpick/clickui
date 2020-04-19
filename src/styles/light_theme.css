@@ -1,0 +1,5 @@
+body[scheme="client_light"],
+body[scheme="bright_light"] {
+    /* Brand */
+    --primary: #456BF1;
+}

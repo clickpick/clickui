@@ -1,0 +1,5 @@
+body[scheme="client_dark"],
+body[scheme="space_gray"] {
+    /* Brand */
+    --primary: #FFF;
+}

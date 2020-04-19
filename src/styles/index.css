@@ -1,3 +1,6 @@
+@import './light_theme.css';
+@import './dark_theme.css';
+
 @import "./constants.css";
 @import "./atomics.css";
 @import "./components.css";
