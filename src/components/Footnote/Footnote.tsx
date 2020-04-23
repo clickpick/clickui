@@ -1,12 +1,12 @@
-import React, { FC, HTMLAttributes, useMemo, memo } from 'react';
+import React, { FC, HTMLAttributes, memo } from 'react';
 import cn from 'classnames';
 
 interface FootnoteProps extends HTMLAttributes<HTMLParagraphElement> { }
 
 const Footnote: FC<FootnoteProps> = memo(({ className, ...restProps }: FootnoteProps) => {
-    const classNames = useMemo(() => cn(className, 'Footnote', 'reset-indent'), [className]);
-
-    return <p className={classNames} {...restProps} />;
+    return (
+        <p className={cn(className, 'Footnote', 'reset-indent')} {...restProps} />
+    );
 });
 
 export default Footnote;

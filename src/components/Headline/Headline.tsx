@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, ReactNode, useMemo, memo } from 'react';
+import React, { FC, HTMLAttributes, ReactNode, memo } from 'react';
 import cn from 'classnames';
 
 interface HeadlineProps extends HTMLAttributes<HTMLHeadingElement> {
@@ -6,10 +6,8 @@ interface HeadlineProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Headline: FC<HeadlineProps> = memo(({ className, children, ...restProps }: HeadlineProps) => {
-    const classNames = useMemo(() => cn(className, 'Headline', 'reset-indent'), [className]);
-
     return (
-        <h1 className={classNames} {...restProps}>
+        <h1 className={cn(className, 'Headline', 'reset-indent')} {...restProps}>
             {children}
         </h1>
     );
