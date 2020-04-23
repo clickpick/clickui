@@ -4,7 +4,7 @@ import cn from 'classnames';
 interface FootnoteProps extends HTMLAttributes<HTMLParagraphElement> { }
 
 const Footnote: FC<FootnoteProps> = memo(({ className, ...restProps }: FootnoteProps) => {
-    const classNames = useMemo(() => cn(className, 'Footnote', 'reset-margins', 'reset-paddings'), [className]);
+    const classNames = useMemo(() => cn(className, 'Footnote', 'reset-indent'), [className]);
 
     return <p className={classNames} {...restProps} />;
 });

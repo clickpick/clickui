@@ -6,7 +6,7 @@ interface HeadlineProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Headline: FC<HeadlineProps> = memo(({ className, children, ...restProps }: HeadlineProps) => {
-    const classNames = useMemo(() => cn(className, 'Headline', 'reset-margins', 'reset-paddings'), [className]);
+    const classNames = useMemo(() => cn(className, 'Headline', 'reset-indent'), [className]);
 
     return (
         <h1 className={classNames} {...restProps}>
