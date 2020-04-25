@@ -44,4 +44,13 @@
      * Components
      */
 
+    /* Field */
+    --field_label-primary: var(--primary);
+    --field_label-secondary: var(--os-secondary); 
+    --field_body-primary: var(--secondary);
+    --field_body-secondary: var(--accent);
+    --field_body-error: var(--error-secondary);
+    --field_counter: var(--os-tertiary);
+    --field_counter-max: var(--error);
+    --field_hint-error: var(--error);
 }
