@@ -1,4 +1,3 @@
-body,
 body[scheme="client_light"],
 body[scheme="bright_light"] {
     /* Brand */
@@ -12,7 +11,7 @@ body[scheme="bright_light"] {
 
     /* OnPrimary */
     --op-primary: #FFF;
-    --oo-secondary: color(white alpha(70%));
+    --op-secondary: color(white alpha(70%));
 
      /* Helpers */
     --error: #E12F2F;

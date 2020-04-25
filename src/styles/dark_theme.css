@@ -11,7 +11,7 @@ body[scheme="space_gray"] {
 
     /* OnPrimary */
     --op-primary: #000;
-    --oo-secondary: color(black alpha(70%));
+    --op-secondary: color(black alpha(70%));
 
     /* Helpers */
     --error: #E12F2F;
