@@ -45,6 +45,10 @@
     outline: none;
 }
 
+.Field__control::placeholder {
+    color: var(--field_control-placeholder);
+}
+
 .Field__aside {
     display: inline-flex;
     flex-shrink: 0;
