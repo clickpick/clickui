@@ -11,6 +11,7 @@ import pkg from './package.json';
 // postcss plugins
 import postcssImport from 'postcss-import';
 import cssnext from 'postcss-cssnext';
+import postcssCustomProperties from 'postcss-custom-properties';
 import cssnano from 'cssnano';
 
 export default {
@@ -33,12 +34,13 @@ export default {
         external(),
         postcss({
             plugins: [
-                postcssImport(),
+                postcssImport({
+                    path: ['src/styles']
+                }),
+                postcssCustomProperties(),
                 cssnext({
                     features: {
-                        customProperties: {
-                            warnings: process.env.NODE_ENV === 'development'
-                        },
+                        customProperties: false
                     },
                     warnForDuplicates: false
                 }),
@@ -46,7 +48,7 @@ export default {
             ],
             modules: false,
             extract: true,
-            minimize: true,
+            // minimize: true,
             sourceMap: false
         }),
         url(),
