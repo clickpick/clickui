@@ -1,0 +1,4 @@
+.Textarea textarea {
+    resize: none;
+    outline: none;
+}
