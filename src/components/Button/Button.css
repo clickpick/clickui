@@ -1,0 +1,214 @@
+.Button {
+    position: relative;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: var(--button_width-mobile);
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-medium);
+    line-height: 20px;
+
+    cursor: pointer;
+    outline: none;
+
+    transition-property: background-color, color;
+    transition: 150ms ease-in;
+}
+
+a.Button {
+    text-decoration: none;
+}
+
+@media (min-width: 600px) {
+    .Button,
+    a.Button {
+        width: auto;
+    }
+}
+
+.Button::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    content: '';
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 4px;
+
+    opacity: 0;
+
+    transition: opacity 150ms ease-in;
+}
+
+.Button svg {
+    width: 20px;
+    height: 20px;
+
+    transition: fill 150ms ease-in;
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* Shapes */
+.Button--circle {
+    width: 52px;
+    height: 52px;
+}
+
+.Button--circle,
+.Button--circle::before {
+    border-radius: 50%;
+}
+
+.Button--circle::before {
+    background-color: var(--button_circle-before);
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* Priorities */
+.Button--primary {
+    background-color: var(--button_primary-background);
+    color: var(--button_primary-color);
+}
+
+.Button--primary::before {
+    background-color: var(--button_primary-before);
+}
+
+.Button--primary svg {
+    fill: var(--button_primary-color);
+}
+
+
+.Button--secondary {
+    background-color: var(--button_secondary-background);
+    color: var(--button_secondary-color);
+}
+
+.Button--secondary.Button--unselect {
+    background-color: var(--button_secondary-unselect);
+}
+
+.Button--secondary::before {
+    background-color: var(--button_secondary-before);
+}
+
+.Button--secondary svg {
+    fill: var(--button_secondary-color);
+}
+
+.Button--secondary:not([disabled]):active::before {
+    opacity: 0.15;
+}
+
+
+.Button--tertiary {
+    background-color: var(--button_tertiary-background);
+    color: var(--button_tertiary-color);
+}
+
+.Button--tertiary::before {
+    background-color: var(--button_tertiary-before);
+}
+
+.Button--tertiary svg {
+    fill: var(--button_tertiary-color);
+}
+
+.Button--tertiary:not([disabled]):hover::before {
+    opacity: 0.05;
+}
+
+.Button--tertiary:not([disabled]):active::before {
+    opacity: 0.10;
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* State */
+.Button[disabled] {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.Button:not([disabled]):hover::before {
+    opacity: 0.1;
+}
+
+.Button:not([disabled]):active::before {
+    opacity: 0.2;
+}
+
+.Button--unselect {
+    color: var(--button_unselect-color);
+}
+
+.Button--unselect::before {
+    background-color: var(--button_unselect-before);
+}
+
+.Button--unselect svg {
+    fill: var(--button_unselect-color);
+}
+
+.Button--unselect:not([disabled]):hover::before {
+    opacity: 0.05;
+}
+
+.Button--unselect:not([disabled]):active::before {
+    opacity: 0.1;
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* Sizes */
+.Button--small {
+    width: auto;
+}
+
+.Button--small svg {
+    width: 16px;
+    height: 16px;
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* Shapes */
+.Button--circle {
+    width: 52px;
+    height: 52px;
+}
+
+.Button--circle,
+.Button--circle::before {
+    border-radius: 50%;
+}
+
+.Button--circle::before {
+    background-color: var(--button_circle-before);
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+/* For before content */
+.Button__before {
+    display: inline-flex;
+    align-items: center;
+}

@@ -47,6 +47,27 @@
      * Components
      */
 
+     /* Button */
+    --button_width-mobile: 270px;
+    --button_circle-before: var(--primary);
+
+    --button_unselect-background: var(--unselect);
+    --button_unselect-color: var(--os-tertiary);
+    --button_unselect-before: #000;
+
+    --button_primary-background: var(--primary);
+    --button_primary-color: #FFF;
+    --button_primary-before: #FFF;
+
+    --button_secondary-background: var(--secondary);
+    --button_secondary-color: var(--primary);
+    --button_secondary-before: var(--primary);
+    --button_secondary-unselect: var(--accent);
+
+    --button_tertiary-background: #FFF;
+    --button_tertiary-color: var(--primary);
+    --button_tertiary-before: var(--primary);
+
     /* Field */
     --field_label-primary: var(--primary);
     --field_label-secondary: var(--os-secondary); 
