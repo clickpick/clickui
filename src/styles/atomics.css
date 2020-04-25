@@ -37,9 +37,27 @@
     padding-left: 8px;
 }
 
+.padding-green--tb {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.padding-blue {
+    padding: 16px;
+}
+
+.padding-orange--rl {
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
 /* Margins */
 .margin-aqua--top {
     margin-top: 8px;
+}
+
+.margin-aqua--right {
+    margin-right: 8px;
 }
 
 .margin-aqua--bottom {
