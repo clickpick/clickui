@@ -18,4 +18,11 @@ body[scheme="space_gray"] {
     --error-secondary: color(#E12F2F alpha(20%));
     --success: #3FA44B;
     --success-secondary: color(#3FA44B alpha(20%));
+
+    /* Surface */
+    --background: #121212;
+    --surface: #212121;
+    --accent: color(#373737 alpha(35%));
+    --blur-overlay: color(#171717 alpha(70%));
+    --blur-overlay-fallback: #171717;
 }
