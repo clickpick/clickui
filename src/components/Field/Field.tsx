@@ -76,7 +76,8 @@ const Field: FC<Props> = memo(({
         }
 
         return cloneElement(children as ReactElement, {
-            className: 'Field__control body',
+            ...children.props,
+            className: cn('Field__control body', children.props.className),
             maxLength,
             ...control,
             ...focusHandler
