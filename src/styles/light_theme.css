@@ -25,4 +25,8 @@ body[scheme="bright_light"] {
     --accent: color(black alpha(3%));
     --blur-overlay: color(white alpha(70%));
     --blur-overlay-fallback: #FFF;
+
+    /* State */
+    --unselect: color(white alpha(3%));
+    --reply: #000;
 }

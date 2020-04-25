@@ -25,4 +25,8 @@ body[scheme="space_gray"] {
     --accent: color(#373737 alpha(35%));
     --blur-overlay: color(#171717 alpha(70%));
     --blur-overlay-fallback: #171717;
+
+    /* State */
+    --unselect: color(white alpha(3%));
+    --reply: #FFF;
 }

@@ -29,6 +29,9 @@
     --blur-overlay: color(white alpha(70%));
     --blur-overlay-fallback: #FFF;
 
+    /* State */
+    --unselect: color(white alpha(3%));
+
     /* Font */
     --font-size-12: 12px;
     --font-size-14: 14px;
@@ -47,11 +50,15 @@
     /* Field */
     --field_label-primary: var(--primary);
     --field_label-secondary: var(--os-secondary); 
+
     --field_body-primary: var(--secondary);
     --field_body-secondary: var(--accent);
     --field_body-error: var(--error-secondary);
+
     --field_control-placeholder: var(--os-tertiary);
+
     --field_counter: var(--os-tertiary);
     --field_counter-max: var(--error);
+
     --field_hint-error: var(--error);
 }
