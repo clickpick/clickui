@@ -69,6 +69,10 @@
     --button_tertiary-color: var(--primary);
     --button_tertiary-before: var(--primary);
 
+    /* Cell */
+    --cell_primary: var(--os-primary);
+    --cell_secondary: var(--os-secondary);
+
     /* Checkbox */
     --checkbox_background: var(--primary);
     --checkbox_check: var(--op-primary);
