@@ -57,15 +57,15 @@
     --button_unselect-before: #000;
 
     --button_primary-background: var(--primary);
-    --button_primary-color: #FFF;
-    --button_primary-before: #FFF;
+    --button_primary-color: var(--op-primary);
+    --button_primary-before: var(--op-primary);
 
     --button_secondary-background: var(--secondary);
     --button_secondary-color: var(--primary);
     --button_secondary-before: var(--primary);
     --button_secondary-unselect: var(--accent);
 
-    --button_tertiary-background: #FFF;
+    --button_tertiary-background: var(--op-primary);
     --button_tertiary-color: var(--primary);
     --button_tertiary-before: var(--primary);
 
