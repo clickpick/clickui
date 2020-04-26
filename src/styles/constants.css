@@ -48,7 +48,7 @@
      * Components
      */
 
-     /* Button */
+    /* Button */
     --button_width-mobile: 270px;
     --button_circle-before: var(--primary);
 
@@ -68,6 +68,10 @@
     --button_tertiary-background: #FFF;
     --button_tertiary-color: var(--primary);
     --button_tertiary-before: var(--primary);
+
+    /* Checkbox */
+    --checkbox_background: var(--primary);
+    --checkbox_check: var(--op-primary);
 
     /* Field */
     --field_label-primary: var(--primary);
