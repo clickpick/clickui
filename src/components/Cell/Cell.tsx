@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { HasChildren } from '../../typings';
 
+import Grid from '../Grid';
 import Caption from '../Caption';
 import Footnote from '../Footnote';
 
@@ -26,7 +27,7 @@ const Cell: FC<CellProps> = memo(({
         cn(className, 'Cell', {
             [`Cell--${size}`]: size,
             'Cell--multiline': multiline
-        }, 'Bs(bb)', 'Bs(bb)--all', 'padding-green--tb', 'padding-blue--rl'),
+        }, 'Bs(bb)--all', 'padding-green--tb', 'padding-blue--rl'),
         [className, size, multiline]);
 
     const beforeView = useMemo(() => {
@@ -74,23 +75,29 @@ const Cell: FC<CellProps> = memo(({
             return null;
         }
 
-        return <div className="Cell__aside margin-purple--left" children={aside} />;
+        return (
+            <Grid
+                inline
+                className="Cell__aside margin-purple--left"
+                justify="center"
+                children={aside} />
+        );
     }, [aside]);
 
     return (
-        <div className={classNames} {...restProps}>
+        <Grid container className={classNames} alignItems="flex-start" {...restProps}>
             {beforeView}
 
-            <div className="Cell__main">
+            <Grid className="Cell__main" zeroMinWidth>
                 {headerView}
                 <div className="Cell__children body" children={children} />
                 {descriptionView}
                 {hintView}
                 {bottomContentView}
-            </div>
+            </Grid>
 
             {asideView}
-        </div>
+        </Grid>
     );
 });
 

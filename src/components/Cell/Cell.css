@@ -1,16 +1,9 @@
-.Cell {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: flex-start;
-}
-
 .Cell__before {
     flex-shrink: 0;
 }
 
 .Cell__main {
     flex-grow: 1;
-    min-width: 0;
 }
 
 .Cell__header,
@@ -32,9 +25,6 @@
 
 .Cell__aside {
     flex-shrink: 0;
-
-    display: inline-flex;
-    justify-content: center;
 }
 
 .Cell--multiline .Cell__children,
