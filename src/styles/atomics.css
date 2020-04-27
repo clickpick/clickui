@@ -73,12 +73,24 @@
     margin-left: 8px;
 }
 
+.margin-purple--top {
+    margin-top: 16px;
+}
+
 .margin-purple--right {
     margin-right: 16px;
 }
 
 .margin-purple--left {
     margin-left: 16px;
+}
+
+.margin-pink--top {
+    margin-top: 24px;
+}
+
+.margin-pink--right {
+    margin-right: 24px;
 }
 
 .body {
