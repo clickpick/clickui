@@ -5,6 +5,7 @@ import { HasChildren } from '../../typings';
 
 interface GridProps extends HTMLAttributes<HTMLDivElement>, HasChildren {
     container?: boolean;
+    inline?: boolean;
     wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
     direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     justify?: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
@@ -15,7 +16,7 @@ interface GridProps extends HTMLAttributes<HTMLDivElement>, HasChildren {
 
 const Grid: FC<GridProps> = memo(({
     className,
-    container,
+    container, inline,
     wrap = 'nowrap', direction = 'row', justify = 'flex-start', alignItems = 'stretch', alignContent = 'stretch',
     zeroMinWidth,
     ...restProps
@@ -23,6 +24,7 @@ const Grid: FC<GridProps> = memo(({
     const classNames = useMemo(() =>
         cn(className, 'Grid', {
             'Grid--container': container,
+            'Grid--inline': inline,
             [`Grid--wrap-${wrap}`]: wrap !== 'nowrap',
             [`Grid--direction-${direction}`]: direction !== 'row',
             [`Grid--justify-${justify}`]: justify !== 'flex-start',
@@ -30,7 +32,7 @@ const Grid: FC<GridProps> = memo(({
             [`Grid--align-content-${alignContent}`]: alignContent !== 'stretch',
             'Grid--zero-min-width': zeroMinWidth
         }, 'Bs(bb)'),
-        [className, container, wrap, direction, justify, alignItems, alignContent, zeroMinWidth]);
+        [className, container, inline, wrap, direction, justify, alignItems, alignContent, zeroMinWidth]);
 
     return <div className={classNames} {...restProps} />;
 });

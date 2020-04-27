@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.Grid--inline {
+    display: inline-flex;
+}
+
 /* Wrap */
 .Grid--wrap-wrap {
     flex-wrap: wrap;
