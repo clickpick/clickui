@@ -10,7 +10,7 @@ export interface UseInput<T> {
 
 export default function useChange<T extends HTMLElement>(defaultValue?: string | string[] | number, handleChange?: ChangeEventHandler<T>): UseInput<T> {
     const [stateValue, setStateValue] = useState<string>('');
-    const isControlledOutside = useRef<boolean>(defaultValue === undefined);
+    const isControlledOutside = useRef<boolean>(defaultValue !== undefined);
     const value = useMemo<string>(() => {
         if (defaultValue === undefined) {
             return stateValue;
@@ -20,7 +20,7 @@ export default function useChange<T extends HTMLElement>(defaultValue?: string |
     }, [defaultValue, stateValue]);
 
     const onChange = useCallback((e) => {
-        if (isControlledOutside.current) {
+        if (!isControlledOutside.current) {
             setStateValue(e.target.value);
         }
 
