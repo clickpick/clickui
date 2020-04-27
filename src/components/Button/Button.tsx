@@ -7,6 +7,7 @@ import cn from 'classnames';
 
 import { HasChildren } from '../../typings';
 
+import Grid from '../Grid';
 import Caption from '../Caption';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, HasChildren {
@@ -50,7 +51,13 @@ const Button: FC<ButtonProps> = memo(({
             return null;
         }
 
-        return <span className="Button__before margin-aqua--right" children={before} />;
+        return (
+            <Grid
+                inline
+                alignItems="center"
+                className="Button__before margin-aqua--right"
+                children={before} />
+        );
     }, [before, shape]);
 
 
