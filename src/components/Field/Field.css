@@ -29,10 +29,6 @@
     background-color: var(--field_body-primary);
 }
 
-.Field__body-in {
-    display: flex;
-}
-
 .Field__control {
     width: 100%;
     height: 20px;
@@ -50,14 +46,10 @@
 }
 
 .Field__aside {
-    display: inline-flex;
     flex-shrink: 0;
 }
 
 .Field__counter {
-    display: flex;
-    justify-content: flex-end;
-
     max-height: 20px;
 
     color: var(--field_counter);

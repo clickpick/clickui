@@ -11,6 +11,7 @@ import { HasClassName, HasChildren, HasOnChange } from '../../typings';
 import useInput from '../../hooks/use-input';
 import useFocus from '../../hooks/use-focus';
 
+import Grid from '../Grid';
 import Caption from '../Caption';
 import Footnote from '../Footnote';
 
@@ -89,7 +90,7 @@ const Field: FC<Props> = memo(({
             return null;
         }
 
-        return <div className="Field__aside margin-aqua--left" children={aside} />;
+        return <Grid inline className="Field__aside margin-aqua--left" children={aside} />;
     }, [aside]);
 
     const counterView = useMemo<ReactNode>(() => {
@@ -101,12 +102,15 @@ const Field: FC<Props> = memo(({
         const max = control.value.length === maxLength
 
         return (
-            <Caption
+            <Grid
+                container
+                justify="flex-end"
                 className={cn('Field__counter', {
                     'Field__counter--hide': hide,
                     'Field__counter--max': max
-                })}
-                children={`${control.value.length}/${maxLength}`} />
+                })}>
+                <Caption children={`${control.value.length}/${maxLength}`} />
+            </Grid>
         );
     }, [maxLength, control.value]);
 
@@ -116,10 +120,10 @@ const Field: FC<Props> = memo(({
                 'Field__body--focused': focus,
                 'Field__body--error': error
             })}>
-                <div className="Field__body-in">
+                <Grid container className="Field__body-in">
                     {controlView}
                     {asideView}
-                </div>
+                </Grid>
 
                 {counterView}
             </div>
