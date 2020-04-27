@@ -7,17 +7,5 @@ storiesOf('Caption', module)
     .add(
         'default',
         () => <Caption>{text('children', 'Some text')}</Caption>,
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Caption component
-
-            ### Usage
-            ~~~ts
-            <Caption>Some text</Caption>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

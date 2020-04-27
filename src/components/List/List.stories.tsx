@@ -13,19 +13,7 @@ storiesOf('List', module)
                 <span>Item 4</span>
                 <span>Item 5</span>
             </List>,
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple List component
-
-            ### Usage
-            ~~~ts
-            <Caption>Some text</Caption>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     )
     .add(
         'ul',
@@ -37,17 +25,5 @@ storiesOf('List', module)
                 <span>Item 4</span>
                 <span>Item 5</span>
             </List>,
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple List component
-
-            ### Usage
-            ~~~ts
-            <Caption>Some text</Caption>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

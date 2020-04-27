@@ -15,6 +15,8 @@ const IconPlus = (
     </svg>
 );
 
+export default { title: 'Button ' };
+
 storiesOf('Button', module)
     .add(
         'primary (default)',
@@ -26,19 +28,7 @@ storiesOf('Button', module)
                 <Button size="medium" before={(withIcon) ? IconPlus : undefined}>{text('children', 'Primary')}</Button>
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Button component
-
-            ### Usage
-            ~~~ts
-            <Button>Some text</Button>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     )
     .add(
         'secondary',
@@ -62,19 +52,7 @@ storiesOf('Button', module)
                     children={text('children', 'Secondary')} />
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Button component
-
-            ### Usage
-            ~~~ts
-            <Button>Some text</Button>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     )
     .add(
         'tertiary',
@@ -98,19 +76,7 @@ storiesOf('Button', module)
                     children={text('children', 'Tertiary')} />
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Button component
-
-            ### Usage
-            ~~~ts
-            <Button>Some text</Button>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     )
     .add(
         'circle (only medium)',
@@ -119,19 +85,7 @@ storiesOf('Button', module)
                 <Button shape="circle">{IconPlus}</Button>
             );
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Button component
-
-            ### Usage
-            ~~~ts
-            <Button>Some text</Button>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     )
     .add(
         'link',
@@ -144,17 +98,5 @@ storiesOf('Button', module)
                 <Button href={href} size="medium" before={(withIcon) ? IconPlus : undefined}>{text('children', 'Primary')}</Button>
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Button component
-
-            ### Usage
-            ~~~ts
-            <Button>Some text</Button>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

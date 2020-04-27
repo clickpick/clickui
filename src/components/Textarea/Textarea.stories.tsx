@@ -18,17 +18,5 @@ storiesOf('Textarea', module)
                     maxLength={maxLength} />
             );
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Textarea component
-
-            ### Usage
-            ~~~ts
-            <Textarea>Some text</Textarea>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

@@ -19,19 +19,7 @@ storiesOf('Checkbox', module)
                     children={text('children', 'Some text')} />
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Checkbox component
-
-            ### Usage
-            ~~~ts
-            <Checkbox>Some text</Checkbox>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     )
     .add(
         'disabled',
@@ -48,17 +36,5 @@ storiesOf('Checkbox', module)
                     disabled={boolean('disabled', true)} />
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Checkbox component
-
-            ### Usage
-            ~~~ts
-            <Checkbox>Some text</Checkbox>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

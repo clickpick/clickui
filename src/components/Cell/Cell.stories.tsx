@@ -64,17 +64,5 @@ storiesOf('Cell', module)
                     style={styles} />
             </>;
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Cell component
-
-            ### Usage
-            ~~~ts
-            <Cell>Some text</Cell>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

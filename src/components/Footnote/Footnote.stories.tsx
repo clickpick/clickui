@@ -7,17 +7,5 @@ storiesOf('Footnote', module)
     .add(
         'default',
         () => <Footnote>{text('children', 'Some text')}</Footnote>,
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Footnote component
-
-            ### Usage
-            ~~~ts
-            <Footnote>Some text</Footnote>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );

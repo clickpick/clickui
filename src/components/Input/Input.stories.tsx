@@ -18,17 +18,5 @@ storiesOf('Input', module)
                     maxLength={maxLength} />
             );
         },
-        {
-            info: { inline: true },
-            text: `
-            ### Notes
-
-            Simple Input component
-
-            ### Usage
-            ~~~ts
-            <Input>Some text</Input>
-            ~~~
-            `
-        }
+        { info: { inline: true } }
     );
