@@ -19,4 +19,21 @@ storiesOf('Input', module)
             );
         },
         { info: { inline: true } }
+    )
+    .add(
+        'promo',
+        () => {
+            const maxLength = number('maxLength', 20);
+
+            return (
+                <Input
+                    view="promo"
+                    placeholder={text('placeholder', 'Enter text...')}
+                    label={text('label', 'Caption')}
+                    hint={text('hint', 'Footnote')}
+                    error={boolean('error', false)}
+                    maxLength={maxLength} />
+            );
+        },
+        { info: { inline: true } }
     );
