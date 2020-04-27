@@ -4,6 +4,7 @@
 @import "../components/Cell/Cell.css";
 @import "../components/Button/Button.css";
 @import "../components/Checkbox/Checkbox.css";
+@import "../components/Grid/Grid.css";
 @import "../components/Field/Field.css";
 @import "../components/List/List.css";
 @import "../components/Textarea/Textarea.css";
