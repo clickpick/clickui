@@ -29,6 +29,8 @@
     width: 16px;
     height: 16px;
     margin-left: -16px;
+
+    transition: transform 150ms ease-in;
 }
 
 .Checkbox__control::before,
@@ -37,7 +39,6 @@
     top: 50%;
     left: 50%;
     transform-origin: 0 0;
-    transition: transform 150ms ease-in;
 }
 
 .Checkbox__control::before {
@@ -103,7 +104,7 @@
 
 /* Focused */
 .Checkbox__input:focus + .Checkbox__control {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 /* Disabled */
