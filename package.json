@@ -1,6 +1,6 @@
 {
   "name": "@clickpick/clickui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "clickui library",
   "main": "dist/clickui.js",
   "module": "dist/clickui.es.js",
