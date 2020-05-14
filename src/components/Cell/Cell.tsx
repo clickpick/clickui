@@ -10,7 +10,7 @@ import Footnote from '../Footnote';
 export interface CellProps extends HTMLAttributes<HTMLDivElement>, HasChildren {
     size?: 'small' | 'medium';
     multiline?: boolean;
-    center?: boolean;
+    centering?: boolean;
     before?: ReactNode;
     header?: ReactNode;
     description?: ReactNode;
@@ -20,7 +20,7 @@ export interface CellProps extends HTMLAttributes<HTMLDivElement>, HasChildren {
 }
 
 const Cell: FC<CellProps> = memo(({
-    className, size = 'small', multiline, center,
+    className, size = 'small', multiline, centering,
     before, header, children, description, hint, bottomContent, aside,
     ...restProps
 }: CellProps) => {
@@ -85,7 +85,7 @@ const Cell: FC<CellProps> = memo(({
         );
     }, [aside]);
 
-    const alignItems = useMemo(() => (center) ? 'center' : 'flex-start', [center]);
+    const alignItems = useMemo(() => (centering) ? 'center' : 'flex-start', [centering]);
 
     return (
         <Grid container className={classNames} alignItems={alignItems} {...restProps}>
