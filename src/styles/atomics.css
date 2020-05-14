@@ -76,6 +76,14 @@
     padding-left: 16px;
 }
 
+.padding-blue--top {
+    padding-top: 16px;
+}
+
+.padding-blue--bottom {
+    padding-bottom: 16px;
+}
+
 .padding-red--tb {
     padding-top: 24px;
     padding-bottom: 24px;
