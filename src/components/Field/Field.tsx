@@ -1,5 +1,5 @@
 import React, {
-    FC, ReactNode, ReactElement,
+    FC, CSSProperties, ReactNode, ReactElement,
     useMemo, useRef, useEffect,
     isValidElement, cloneElement,
     memo
@@ -16,6 +16,7 @@ import Caption from '../Caption';
 import Footnote from '../Footnote';
 
 export interface FieldProps extends HasClassName, HasChildren {
+    style?: CSSProperties;
     view?: 'default' | 'promo';
     label?: ReactNode;
     value?: string | string[] | number;

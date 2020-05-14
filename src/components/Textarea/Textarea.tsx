@@ -18,7 +18,7 @@ export function changeHeight(element: HTMLTextAreaElement | ChangeEvent<HTMLText
 }
 
 const Textarea: FC<TextareaProps> = memo(forwardRef(({
-    className,
+    className, style,
     view, label, value, maxLength, error, hint, autofocus, aside,
     onChange, triggerMaxLength,
     ...restProps
@@ -42,6 +42,7 @@ const Textarea: FC<TextareaProps> = memo(forwardRef(({
     return (
         <Field
             className={cn(className, 'Textarea')}
+            style={style}
             view={view}
             label={label}
             value={value}

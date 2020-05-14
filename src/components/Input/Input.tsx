@@ -6,7 +6,7 @@ import Field, { FieldProps } from '../Field';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>, FieldProps { }
 
 const Input: FC<InputProps> = memo(({
-    className,
+    className, style,
     view, label, value, maxLength, error, hint, autofocus, aside,
     onChange, triggerMaxLength,
     ...restProps
@@ -14,6 +14,7 @@ const Input: FC<InputProps> = memo(({
     return (
         <Field
             className={cn(className, 'Input')}
+            style={style}
             view={view}
             label={label}
             value={value}
