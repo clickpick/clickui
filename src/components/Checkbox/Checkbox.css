@@ -4,7 +4,9 @@
 
 .Checkbox__input {
     position: absolute;
+    z-index: -1;
     appearance: none;
+    opacity: 0;
 }
 
 /* Sizes */
