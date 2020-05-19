@@ -18,7 +18,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorEleme
     disabled?: boolean;
     href?: string;
     full?: boolean;
-    mobileFull: boolean;
+    mobileFull?: boolean;
 }
 
 const Button: FC<ButtonProps> = memo(({
