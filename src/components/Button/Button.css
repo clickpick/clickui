@@ -198,6 +198,7 @@ a.Button {
 
 .Button--full,
 .Button--mobile-full {
+    width: 100%;
     max-width: var(--button_width-mobile);
 }
 
