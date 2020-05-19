@@ -5,8 +5,6 @@
     justify-content: center;
     align-items: center;
 
-    width: var(--button_width-mobile);
-
     border: none;
     border-radius: 4px;
 
@@ -23,13 +21,6 @@
 
 a.Button {
     text-decoration: none;
-}
-
-@media (min-width: 600px) {
-    .Button,
-    a.Button {
-        width: auto;
-    }
 }
 
 .Button::before {
@@ -204,3 +195,14 @@ a.Button {
     background-color: var(--button_circle-before);
 }
 /* ––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.Button--full,
+.Button--mobile-full {
+    max-width: var(--button_width-mobile);
+}
+
+@media (min-width: 600px) {
+    .Button--mobile-full {
+        width: auto;
+    }
+}

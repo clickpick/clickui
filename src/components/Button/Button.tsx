@@ -17,11 +17,14 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorEleme
     before?: ReactNode;
     disabled?: boolean;
     href?: string;
+    full?: boolean;
+    mobileFull: boolean;
 }
 
 const Button: FC<ButtonProps> = memo(({
     className,
     priority = 'primary', shape = 'round', size = 'small',
+    full, mobileFull,
     before, children,
     href,
     ...restProps
@@ -40,11 +43,13 @@ const Button: FC<ButtonProps> = memo(({
             [`Button--${shape}`]: shape,
             [`Button--${priority}`]: priority,
             [`Button--${size}`]: size,
+            'Button--full': full && !mobileFull,
+            'Button--mobile-full': mobileFull,
             'Button--unselect': !isLink && hasNotPressed,
             'padding-green--tb padding-orange--rl': shape === 'round' && size === 'medium',
             'padding-yellow': shape === 'round' && size === 'small'
         });
-    }, [className, shape, priority, size, isLink, hasNotPressed]);
+    }, [className, shape, priority, size, full, mobileFull, isLink, hasNotPressed]);
 
     const beforeView = useMemo<ReactNode>(() => {
         if (!before || shape !== 'round') {
