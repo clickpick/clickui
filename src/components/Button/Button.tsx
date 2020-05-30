@@ -11,6 +11,7 @@ import Grid from '../Grid';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLElement>, CoreButtonProps, HasChildren {
     size: 'large' | 'small';
+    mobileFull?: boolean;
     before?: ReactNode;
     aside?: ReactNode;
     component?: ElementType;
@@ -19,7 +20,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLElement>, CoreButtonProps
 }
 
 const Button: FC<ButtonProps> = ({
-    priority, size,
+    priority, size, mobileFull,
     before, aside, children,
     component = 'button',
     ...restProps
@@ -57,7 +58,7 @@ const Button: FC<ButtonProps> = ({
 
     const contentView = useMemo<ReactNode>(() => {
         return (
-            <Grid container alignItems="center" as="span">
+            <Grid container justify="center" alignItems="center" as="span">
                 {beforeView}
                 {children}
                 {asideView}
@@ -75,6 +76,9 @@ const Button: FC<ButtonProps> = ({
 const StyledButton = styled(memo(Button))`
     ${CoreButton};
 
+    width: ${(props) => (props.mobileFull) ? '100%' : 'auto'};
+    max-width: 270px;
+
     padding: ${(props) => (props.size === 'large') ? '12px 24px' : '8px 12px'};
 
     border-radius: 4px;
@@ -82,6 +86,10 @@ const StyledButton = styled(memo(Button))`
     font-size: ${(props) => props.theme.fontSize.footnote};
     font-weight: ${(props) => props.theme.fontWeight.normal};
     line-height: 20px;
+
+    @media (min-width: 600px) {
+        width: auto;
+    }
 `;
 
 const Side = styled(Grid) <{ aside?: boolean }>`
