@@ -1,12 +1,16 @@
-import React, { FC, HTMLAttributes, useMemo, memo } from 'react';
-import cn from 'classnames';
+import { HTMLAttributes } from 'react';
+import styled from '../../theme';
 
-interface CaptionProps extends HTMLAttributes<HTMLSpanElement> { }
+interface CaptionProps extends HTMLAttributes<HTMLElement> { }
 
-const Caption: FC<CaptionProps> = memo(({ className, ...restProps }: CaptionProps) => {
-    const classNames = useMemo(() => cn(className, 'Caption'), [className]);
+const Caption = styled.span<CaptionProps>`
+    font-size: ${(props) => props.theme.fontSize.caption};
+    font-weight: ${(props) => props.theme.fontWeight.regular};
+    line-height: 16px;
 
-    return <span className={classNames} {...restProps} />;
-});
+    p& {
+        margin: 0;
+    }
+`;
 
 export default Caption;
