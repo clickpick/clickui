@@ -84,7 +84,7 @@ const StyledButton = styled(memo(Button))`
     border-radius: 4px;
 
     font-size: ${(props) => props.theme.fontSize.footnote};
-    font-weight: ${(props) => props.theme.fontWeight.normal};
+    font-weight: ${(props) => props.theme.fontWeight.regular};
     line-height: 20px;
 
     @media (min-width: 600px) {

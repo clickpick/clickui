@@ -40,7 +40,7 @@ export interface ThemeInterface {
 	};
 
 	fontWeight: {
-		normal: number;
+		regular: number;
 		medium: number;
 		bold: number;
 	};

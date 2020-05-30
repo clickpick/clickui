@@ -33,7 +33,7 @@ export const theme: ThemeInterface = {
     },
 
     fontWeight: {
-        normal: 400,
+        regular: 400,
         medium: 500,
         bold: 600
     }
