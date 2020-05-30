@@ -1,13 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Button from './Button';
-import { text, boolean } from '@storybook/addon-knobs/';
+import { text } from '@storybook/addon-knobs/';
 
-const IconArrow = (
-    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" clipRule="evenodd" d="M3.54663 6.04581C3.54664 5.91729 3.57227 5.79005 3.62207 5.67157C3.67187 5.55309 3.7448 5.44574 3.83661 5.3558C4.02354 5.17258 4.27487 5.06995 4.53662 5.06995C4.79837 5.06995 5.0497 5.17258 5.23663 5.3558L8.5036 8.56979L11.7696 5.3558C11.9565 5.17258 12.2079 5.06995 12.4696 5.06995C12.7314 5.06995 12.9827 5.17258 13.1696 5.3558C13.2615 5.44568 13.3346 5.55299 13.3845 5.67148C13.4343 5.78997 13.46 5.91725 13.46 6.04581C13.46 6.17436 13.4343 6.30161 13.3845 6.4201C13.3346 6.5386 13.2615 6.64594 13.1696 6.73581L9.2016 10.6408C9.01467 10.824 8.76334 10.9267 8.50159 10.9267C8.23983 10.9267 7.98856 10.824 7.80164 10.6408L3.83362 6.73581C3.7424 6.64559 3.67006 6.53811 3.62079 6.41965C3.57152 6.30119 3.5463 6.17411 3.54663 6.04581Z" />
-    </svg>
-);
+import { ThemeProvider } from '../../theme';
+import { theme } from '../../theme/schema';
+import Grid from '../Grid';
 
 const IconPlus = (
     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,84 +17,275 @@ export default { title: 'Button ' };
 
 storiesOf('Button', module)
     .add(
-        'primary (default)',
-        () => {
-            const withIcon = boolean('with icon', false);
-
-            return <>
-                <Button before={(withIcon) ? IconArrow : undefined} style={{ marginRight: 8 }}>{text('children', 'Primary')}</Button>
-                <Button size="medium" before={(withIcon) ? IconPlus : undefined}>{text('children', 'Primary')}</Button>
-            </>;
-        },
-        { info: { inline: true } }
-    )
-    .add(
-        'secondary',
-        () => {
-            const withIcon = boolean('with icon', false);
-            const withPressed = boolean('with pressed', false);
-            const isPressed = boolean('aria-pressed', false);
-
-            return <>
-                <Button
-                    priority="secondary"
-                    before={(withIcon) ? IconArrow : undefined}
-                    aria-pressed={(withPressed) ? isPressed : undefined}
-                    children={text('children', 'Secondary')}
-                    style={{ marginRight: 8 }} />
-                <Button
-                    priority="secondary"
-                    size="medium"
-                    before={(withIcon) ? IconPlus : undefined}
-                    aria-pressed={(withPressed) ? isPressed : undefined}
-                    children={text('children', 'Secondary')} />
-            </>;
-        },
-        { info: { inline: true } }
-    )
-    .add(
-        'tertiary',
-        () => {
-            const withIcon = boolean('with icon', false);
-            const withPressed = boolean('with pressed', false);
-            const isPressed = boolean('aria-pressed', false);
-
-            return <>
-                <Button
-                    priority="tertiary"
-                    before={(withIcon) ? IconArrow : undefined}
-                    aria-pressed={(withPressed) ? isPressed : undefined}
-                    children={text('children', 'Tertiary')}
-                    style={{ marginRight: 8 }} />
-                <Button
-                    priority="tertiary"
-                    size="medium"
-                    before={(withIcon) ? IconPlus : undefined}
-                    aria-pressed={(withPressed) ? isPressed : undefined}
-                    children={text('children', 'Tertiary')} />
-            </>;
-        },
-        { info: { inline: true } }
-    )
-    .add(
-        'circle (only medium)',
+        'default',
         () => {
             return (
-                <Button shape="circle">{IconPlus}</Button>
+                <ThemeProvider theme={theme}>
+                    <Grid container direction="column">
+                        <Grid container alignItems="center" style={{ marginBottom: '40px'}}>
+                            <Button
+                                href="https://vk.com/nbarinov23"
+                                target="_blank"
+                                component="span"
+                                style={{ marginRight: '24px' }}
+                                priority="primary"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="primary"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="primary"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="primary"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="primary"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="primary"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+
+                        <Grid container alignItems="center" style={{ marginBottom: '40px'}}>
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="secondary"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="secondary"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="secondary"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="secondary"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="secondary"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="secondary"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+
+                        <Grid container alignItems="center" style={{ marginBottom: '40px'}}>
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="tertiary"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="tertiary"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="tertiary"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="tertiary"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="tertiary"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="tertiary"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+
+                        <Grid container alignItems="center" style={{ marginBottom: '40px' }}>
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+
+                        <Grid container alignItems="center" style={{ marginBottom: '40px' }}>
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive_secondary"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive_secondary"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive_secondary"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive_secondary"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive_secondary"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="destructive_secondary"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+
+                        <Grid container alignItems="center" style={{ marginBottom: '40px' }}>
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+
+                        <Grid container alignItems="center" style={{ marginBottom: '40px' }}>
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention_secondary"
+                                size="large"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention_secondary"
+                                size="large"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention_secondary"
+                                size="large"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention_secondary"
+                                size="small"
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention_secondary"
+                                size="small"
+                                before={IconPlus}
+                                children={text('children', 'Button')} />
+                            <Button
+                                style={{ marginRight: '24px' }}
+                                priority="attention_secondary"
+                                size="small"
+                                aside={IconPlus}
+                                children={text('children', 'Button')} />
+                        </Grid>
+                    </Grid>
+                </ThemeProvider>
             );
         },
-        { info: { inline: true } }
-    )
-    .add(
-        'link',
-        () => {
-            const withIcon = boolean('with icon', false);
-            const href = text('href', '#');
-
-            return <>
-                <Button href={href} priority="secondary" before={(withIcon) ? IconArrow : undefined} style={{ marginRight: 8 }}>{text('children', 'Primary')}</Button>
-                <Button href={href} size="medium" before={(withIcon) ? IconPlus : undefined}>{text('children', 'Primary')}</Button>
-            </>;
-        },
-        { info: { inline: true } }
+        { info: { inline: false } }
     );

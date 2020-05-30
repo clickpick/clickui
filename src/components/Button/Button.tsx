@@ -1,98 +1,92 @@
 import React, {
-    FC, HTMLAttributes, ReactNode,
+    FC, ButtonHTMLAttributes, ReactNode, ElementType,
     useMemo,
     createElement, memo
 } from 'react';
-import cn from 'classnames';
+import styled from '../../theme';
 
 import { HasChildren } from '../../typings';
-
+import { CoreButton, CoreButtonProps } from '../core/Button';
 import Grid from '../Grid';
-import Caption from '../Caption';
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, HasChildren {
-    priority?: 'primary' | 'secondary' | 'tertiary';
-    shape?: 'round' | 'circle';
-    size?: 'small' | 'medium';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLElement>, CoreButtonProps, HasChildren {
+    size: 'large' | 'small';
     before?: ReactNode;
-    disabled?: boolean;
+    aside?: ReactNode;
+    component?: ElementType;
     href?: string;
-    full?: boolean;
-    mobileFull?: boolean;
+    target?: string;
 }
 
-const Button: FC<ButtonProps> = memo(({
-    className,
-    priority = 'primary', shape = 'round', size = 'small',
-    full, mobileFull,
-    before, children,
-    href,
+const Button: FC<ButtonProps> = ({
+    priority, size,
+    before, aside, children,
+    component = 'button',
     ...restProps
 }: ButtonProps) => {
-    const isLink = useMemo<boolean>(() => href !== undefined, [href]);
-    const hasNotPressed = useMemo<boolean>(() => restProps['aria-pressed'] === false, [restProps]);
-
-    const classNames = useMemo<string>(() => {
-        const classNames = cn(className, 'Button', 'Bs(bb)', 'Bs(bb)--all', 'reset-indent');
-
-        if (shape === 'circle') {
-            return cn(classNames, 'Button--primary', 'Button--circle', 'padding-blue');
-        }
-
-        return cn(classNames, {
-            [`Button--${shape}`]: shape,
-            [`Button--${priority}`]: priority,
-            [`Button--${size}`]: size,
-            'Button--full': full && !mobileFull,
-            'Button--mobile-full': mobileFull,
-            'Button--unselect': !isLink && hasNotPressed,
-            'padding-green--tb padding-orange--rl': shape === 'round' && size === 'medium',
-            'padding-yellow': shape === 'round' && size === 'small'
-        });
-    }, [className, shape, priority, size, full, mobileFull, isLink, hasNotPressed]);
-
     const beforeView = useMemo<ReactNode>(() => {
-        if (!before || shape !== 'round') {
-            return null;
+        if (before === undefined) {
+            return;
         }
 
         return (
-            <Grid
+            <Side
+                as="span"
+                container
                 inline
                 alignItems="center"
-                className="Button__before margin-aqua--right"
                 children={before} />
         );
-    }, [before, shape]);
+    }, [before]);
 
-
-    const contentView = useMemo<ReactNode>(() => {
-        if (!children) {
-            return null;
+    const asideView = useMemo<ReactNode>(() => {
+        if (aside === undefined) {
+            return;
         }
 
-        return createElement(
-            (size === 'small') ? Caption : 'span',
-            { className: 'Button__content' },
-            children
-        );
-    }, [children, size]);
-
-    if (isLink) {
         return (
-            <a href={href} target="_blank" rel="noopener noreferrer" className={classNames} {...restProps}>
-                {beforeView}
-                {contentView}
-            </a>
+            <Side
+                as="span"
+                container
+                inline
+                alignItems="center"
+                aside
+                children={aside} />
         );
-    }
+    }, [aside]);
 
-    return (
-        <button className={classNames} {...restProps}>
-            {beforeView}
-            {contentView}
-        </button>
+    const contentView = useMemo<ReactNode>(() => {
+        return (
+            <Grid container alignItems="center" as="span">
+                {beforeView}
+                {children}
+                {asideView}
+            </Grid>
+        );
+    }, [beforeView, children, asideView]);
+
+    return createElement(
+        (restProps.href) ? 'a' : component,
+        restProps,
+        contentView
     );
-});
+};
 
-export default Button;
+const StyledButton = styled(memo(Button))`
+    ${CoreButton};
+
+    padding: ${(props) => (props.size === 'large') ? '12px 24px' : '8px 12px'};
+
+    border-radius: 4px;
+
+    font-size: ${(props) => props.theme.fontSize.footnote};
+    font-weight: ${(props) => props.theme.fontWeight.normal};
+    line-height: 20px;
+`;
+
+const Side = styled(Grid) <{ aside?: boolean }>`
+    align-self: center;
+    ${(props) => (props.aside) ? 'margin-left: 10px;' : 'margin-right: 10px;'}
+`;
+
+export default StyledButton;
