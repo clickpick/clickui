@@ -4,7 +4,17 @@ export const theme: ThemeInterface = {
     color: {
         primary: '#456BF1',
         secondary: 'rgba(69, 107, 241, 0.1)',
-        tertiary: '#FFF',
+
+        onSurface: {
+            primary: 'rgba(0, 0, 0, 0.9)',
+            secondary: 'rgba(0, 0, 0, 0.6)',
+            tertiary: 'rgba(0, 0, 0, 0.3)',
+        },
+
+        onPrimary: {
+            primary: '#FFF',
+            secondary: 'rgba(255, 255, 255, 0.7)',
+        },
 
         error: '#E12F2F',
         errorSecondary: 'rgba(225, 47, 47, 0.1)',

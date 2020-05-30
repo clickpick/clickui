@@ -11,9 +11,21 @@ export interface ThemeInterface {
     color: {
         primary: string;
 		secondary: string;
-		tertiary: string;
+
+		onSurface: {
+			primary: string;
+			secondary: string;
+			tertiary: string;
+		};
+
+		onPrimary: {
+			primary: string;
+			secondary: string;
+		};
+
 		error: string;
 		errorSecondary: string;
+
 		attention: string;
 		attentionSecondary: string;
 
