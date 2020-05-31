@@ -12,7 +12,7 @@ export interface CoreGridProps {
 }
 
 export const CoreGrid = css<CoreGridProps>`
-    ${(props) => (props.container) && `
+    ${(props) => (props.container || props.inline) && `
         display: ${(props.inline) ? 'inline-flex' : 'flex'};
         ${(props.wrap) ? `flex-wrap: ${props.wrap};` : ''}
         ${(props.direction) ? `flex-direction: ${props.direction};` : ''}

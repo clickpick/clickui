@@ -11,7 +11,7 @@ export interface LabelProps extends HTMLAttributes<HTMLSpanElement>, CoreLabelPr
 
 const Label: FC<LabelProps> = ({ priority, children, ...restProps }: LabelProps) => {
     return (
-        <Grid container inline justify="center" alignItems="center" as="span" zeroMinWidth {...restProps}>
+        <Grid inline justify="center" alignItems="center" as="span" zeroMinWidth {...restProps}>
             <Caption>{children}</Caption>
         </Grid>
     );
