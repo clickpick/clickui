@@ -5,6 +5,7 @@ export interface CoreLabelProps {
 }
 
 export const CoreLabel = css<CoreLabelProps>`
+    box-sizing: border-box;
     height: 20px;
 
     border-radius: 4px;
