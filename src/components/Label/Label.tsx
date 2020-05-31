@@ -5,13 +5,13 @@ import { CoreLabel, CoreLabelProps } from '../core/Label';
 import Grid from '../Grid';
 import Caption from '../Caption';
 
-interface LabelProps extends HTMLAttributes<HTMLSpanElement>, CoreLabelProps {
+export interface LabelProps extends HTMLAttributes<HTMLSpanElement>, CoreLabelProps {
     children: ReactText;
 }
 
 const Label: FC<LabelProps> = ({ priority, children, ...restProps }: LabelProps) => {
     return (
-        <Grid container inline alignItems="center" as="span" zeroMinWidth {...restProps}>
+        <Grid container inline justify="center" alignItems="center" as="span" zeroMinWidth {...restProps}>
             <Caption>{children}</Caption>
         </Grid>
     );
