@@ -58,21 +58,7 @@ export const CoreButton = css<CoreButtonProps>`
     svg {
         width: 16px;
         height: 16px;
-        fill: ${(props) => {
-            switch (props.priority) {
-                case 'secondary': case 'tertiary':
-                    return props.theme.color.primary;
-
-                case 'destructive_secondary':
-                    return props.theme.color.error;
-
-                case 'attention_secondary':
-                    return props.theme.color.attention;
-
-                default:
-                    return props.theme.color.onPrimary.primary;
-            }
-        }};
+        fill: currentColor;
     }
 
     &::before {
