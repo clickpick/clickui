@@ -40,6 +40,7 @@ export interface ThemeInterface {
 		caption: string;
 		footnote: string;
 		body: string;
+		button: string;
 	};
 
 	fontWeight: {

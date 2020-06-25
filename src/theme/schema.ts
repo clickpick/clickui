@@ -33,6 +33,7 @@ export const theme: ThemeInterface = {
         caption: '12px',
         footnote: '14px',
         body: '16px',
+        button: '16px',
     },
 
     fontWeight: {
