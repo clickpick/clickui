@@ -83,7 +83,7 @@ const StyledButton = styled(memo(Button))`
 
     border-radius: 4px;
 
-    font-size: ${(props) => props.theme.fontSize.footnote};
+    font-size: ${(props) => props.theme.fontSize.button};
     font-weight: ${(props) => props.theme.fontWeight.regular};
     line-height: 20px;
 
