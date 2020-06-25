@@ -3,7 +3,7 @@ import { ThemeInterface } from './index';
 export const theme: ThemeInterface = {
     color: {
         primary: '#456BF1',
-        secondary: 'rgba(69, 107, 241, 0.1)',
+        secondary: '#F2F6FE',
 
         onSurface: {
             primary: 'rgba(0, 0, 0, 0.9)',
@@ -17,10 +17,13 @@ export const theme: ThemeInterface = {
         },
 
         error: '#E12F2F',
-        errorSecondary: 'rgba(225, 47, 47, 0.1)',
+        errorSecondary: '#FCEAEA',
 
         attention: '#FF9500',
         attentionSecondary: 'rgba(255, 149, 0, 0.1)',
+
+        success: '#3FA44B',
+        successSecondary: 'rgba(63, 164, 75, 0.1)',
 
         white: '#FFF',
         black: '#000'
@@ -36,5 +39,19 @@ export const theme: ThemeInterface = {
         regular: 400,
         medium: 500,
         bold: 600
+    },
+
+    spacing: {
+        margins: {
+            aqua: 8,
+            purple: 16,
+            pink: 24
+        },
+        paddings: {
+            yellow: 8,
+            green: 12,
+            blue: 16,
+            red: 24
+        }
     }
 };
