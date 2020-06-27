@@ -1,8 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+
+import { ThemeProvider } from '../../theme';
+import { theme } from '../../theme/schema';
+
 import Cell from './Cell';
-import Checkbox from '../Checkbox';
-import { text, boolean } from '@storybook/addon-knobs/';
+import Footnote from '../Footnote';
+import Button from '../Button';
 
 const styles = { maxWidth: 350 };
 
@@ -20,49 +24,45 @@ const IconSample = (
 
 );
 
-const IconArrow = (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.04593 12.9534C5.91741 12.9534 5.79017 12.9277 5.67169 12.8779C5.55321 12.8281 5.44586 12.7552 5.35593 12.6634C5.1727 12.4765 5.07007 12.2251 5.07007 11.9634C5.07007 11.7016 5.1727 11.4503 5.35593 11.2634L8.56992 7.9964L5.35593 4.73041C5.1727 4.54348 5.07007 4.29215 5.07007 4.0304C5.07007 3.76864 5.1727 3.51731 5.35593 3.33038C5.4458 3.23846 5.55311 3.1654 5.6716 3.11554C5.79009 3.06568 5.91737 3.04004 6.04593 3.04004C6.17448 3.04004 6.30174 3.06568 6.42023 3.11554C6.53872 3.1654 6.64606 3.23846 6.73593 3.33038L10.6409 7.2984C10.8242 7.48533 10.9268 7.73666 10.9268 7.99841C10.9268 8.26017 10.8242 8.51144 10.6409 8.69836L6.73593 12.6664C6.64571 12.7576 6.53823 12.8299 6.41977 12.8792C6.30131 12.9285 6.17423 12.9537 6.04593 12.9534Z" fill="#456BF1" />
-        </g>
-        <defs>
-            <clipPath id="clip0">
-                <path d="M0 0H16V16H0V0Z" fill="white" />
-            </clipPath>
-        </defs>
-    </svg>
-
-);
-
 storiesOf('Cell', module)
     .add(
         'default',
         () => {
-            const showAsideContent = boolean('show aside content', false);
-
-            return <>
-                <Cell className="margin-aqua--bottom">Начало дня</Cell>
-                <Cell
-                    className="margin-aqua--bottom"
-                    children="Сложный пункт"
-                    hint="Это настройка позволяет Санычу дать по ебалу" />
-                <Cell
-                    className="margin-aqua--bottom"
-                    before={IconSample}
-                    children="Работа на дому"
-                    aside={IconArrow}
-                    style={{ maxWidth: 250 }} />
-                <Cell
-                    className="margin-aqua--bottom"
-                    size="medium"
-                    header={text('header', 'Header')}
-                    description={text('description', 'Description')}
-                    children={text('children', 'Some text')}
-                    hint={text('hint', 'Hint')}
-                    multiline={boolean('multiline', false)}
-                    aside={(showAsideContent) ? <Checkbox controlSize="medium" /> : undefined}
-                    style={styles} />
-            </>;
+            return (
+                <ThemeProvider theme={theme}>
+                    <Cell
+                        size="small"
+                        before="Before"
+                        children="Body"
+                        after={<Footnote children="Footnote" />}
+                        style={styles}
+                        expandable />
+                    <Cell
+                        size="small"
+                        before={IconSample}
+                        children="Sooooo long body text text text text text text"
+                        caption="Sooooo long body text text text text text text"
+                        style={styles} />
+                    <Cell
+                        size="small"
+                        children="Sooooo long body text text text text text text"
+                        after={<Button priority="secondary" size="small" children="Button" />}
+                        style={styles}
+                        multiline />
+                    <Cell
+                        size="small"
+                        children="Уведомления"
+                        style={styles}
+                        expandable />
+                    <Cell
+                        size="small"
+                        children="Евгений Иванов"
+                        caption="Дизайнер"
+                        after={<Footnote children="Заблокирован" />}
+                        style={styles}
+                        expandable />
+                </ThemeProvider>
+            );
         },
-        { info: { inline: true } }
+        { info: { inline: false } }
     );

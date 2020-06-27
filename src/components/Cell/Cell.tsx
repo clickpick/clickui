@@ -1,107 +1,106 @@
 import React, { FC, HTMLAttributes, ReactNode, useMemo, memo } from 'react';
-import cn from 'classnames';
-
-import { HasChildren } from '../../typings';
+import styled, { css, margin, padding } from '../../theme';
 
 import Grid from '../Grid';
 import Caption from '../Caption';
-import Footnote from '../Footnote';
 
-export interface CellProps extends HTMLAttributes<HTMLDivElement>, HasChildren {
-    size?: 'small' | 'medium';
-    multiline?: boolean;
-    centering?: boolean;
+interface CellProps extends HTMLAttributes<HTMLDivElement>, Multiline {
+    size: 'small' | 'medium';
     before?: ReactNode;
-    header?: ReactNode;
-    description?: ReactNode;
-    hint?: ReactNode;
-    bottomContent?: ReactNode;
-    aside?: ReactNode;
+    caption?: ReactNode;
+    after?: ReactNode;
+    expandable?: boolean;
 }
 
-const Cell: FC<CellProps> = memo(({
-    className, size = 'small', multiline, centering,
-    before, header, children, description, hint, bottomContent, aside,
-    ...restProps
-}: CellProps) => {
-    const classNames = useMemo(() =>
-        cn(className, 'Cell', {
-            [`Cell--${size}`]: size,
-            'Cell--multiline': multiline
-        }, 'Bs(bb)--all', 'padding-green--tb', 'padding-blue--rl'),
-        [className, size, multiline]);
+interface Multiline {
+    multiline?: boolean;
+}
 
+const Cell: FC<CellProps> = ({ size, before, children, caption, after, multiline, expandable, ...restProps }: CellProps) => {
     const beforeView = useMemo(() => {
         if (!before) {
-            return null;
-        }
-
-        return <div className="Cell__before margin-purple--right" children={before} />;
-    }, [before]);
-
-    const headerView = useMemo(() => {
-        if (!header) {
-            return null;
-        }
-
-        return <Caption className="Cell__header" children={header} />;
-    }, [header]);
-
-    const descriptionView = useMemo(() => {
-        if (!description) {
-            return null;
-        }
-
-        return <Footnote className="Cell__description" children={description} />;
-    }, [description]);
-
-    const hintView = useMemo(() => {
-        if (!hint) {
-            return null;
-        }
-
-        return <Caption className="Cell__hint" children={hint} />;
-    }, [hint]);
-
-    const bottomContentView = useMemo(() => {
-        if (!bottomContent || size !== 'medium') {
-            return null;
-        }
-
-        return <div className="Cell__bottom-content" children={bottomContent} />;
-    }, [bottomContent, size]);
-
-    const asideView = useMemo(() => {
-        if (!aside) {
-            return null;
+            return;
         }
 
         return (
-            <Grid
-                inline
-                className="Cell__aside margin-purple--left"
-                justify="center"
-                children={aside} />
+            <Side container alignItems="center" children={before} />
         );
-    }, [aside]);
+    }, [before]);
 
-    const alignItems = useMemo(() => (centering) ? 'center' : 'flex-start', [centering]);
+    const captionView = useMemo(() => {
+        if (!caption) {
+            return;
+        }
+
+        return <StyledCaption children={caption} multiline={multiline} />;
+    }, [caption, multiline]);
+
+    const afterView = useMemo(() => {
+        if (!after && !expandable) {
+            return;
+        }
+
+        return (
+            <Side container alignItems="center" aside>
+                {after}
+                {(expandable) &&
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M8.04593 14.9534C7.91741 14.9534 7.79017 14.9277 7.67169 14.8779C7.55321 14.8281 7.44586 14.7552 7.35593 14.6634C7.1727 14.4765 7.07007 14.2251 7.07007 13.9634C7.07007 13.7016 7.1727 13.4503 7.35593 13.2634L10.5699 9.9964L7.35593 6.73041C7.1727 6.54348 7.07007 6.29215 7.07007 6.0304C7.07007 5.76864 7.1727 5.51731 7.35593 5.33038C7.4458 5.23846 7.55311 5.1654 7.6716 5.11554C7.79009 5.06568 7.91737 5.04004 8.04593 5.04004C8.17448 5.04004 8.30174 5.06568 8.42023 5.11554C8.53872 5.1654 8.64606 5.23846 8.73593 5.33038L12.6409 9.2984C12.8242 9.48533 12.9268 9.73666 12.9268 9.99841C12.9268 10.2602 12.8242 10.5114 12.6409 10.6984L8.73593 14.6664C8.64571 14.7576 8.53823 14.8299 8.41977 14.8792C8.30131 14.9285 8.17423 14.9537 8.04593 14.9534Z" fill="black" fillOpacity="0.3" />
+                    </svg>}
+            </Side>
+        );
+    }, [after, expandable]);
 
     return (
-        <Grid container className={classNames} alignItems={alignItems} {...restProps}>
+        <Grid container alignItems="center" {...restProps} role={(expandable) ? 'button' : undefined}>
             {beforeView}
-
-            <Grid className="Cell__main" zeroMinWidth>
-                {headerView}
-                <div className="Cell__children body" children={children} />
-                {descriptionView}
-                {hintView}
-                {bottomContentView}
-            </Grid>
-
-            {asideView}
+            <Main zeroMinWidth>
+                <Content children={children} multiline={multiline} />
+                {captionView}
+            </Main>
+            {afterView}
         </Grid>
     );
-});
+};
 
-export default Cell;
+const StyledCell = styled(memo(Cell))`
+    ${(props) => padding((props.size === 'medium') ? 'yellow' : 'green', ['padding-top', 'padding-bottom'])}
+    ${padding('blue', ['padding-right', 'padding-left'])}
+
+    font-size: ${(props) => props.theme.fontSize.body};
+
+    &[role="button"] {
+        cursor: pointer;
+    }
+`;
+
+const Side = styled(Grid) <{ aside?: boolean }>`
+    flex-shrink: 0;
+    align-self: center;
+    ${(props) => margin('purple', [(props.aside) ? 'margin-left' : 'margin-right'])}
+
+    ${(props) => (props.aside) ? `color: ${props.theme.color.onSurface.secondary}` : ''}
+`;
+
+const multilineText = css<Multiline>`
+    ${(props) => (!props.multiline) && `
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    `}
+`;
+
+const Main = styled(Grid)`
+    flex-grow: 1;
+`;
+
+const Content = styled.div<Multiline>`
+    ${multilineText}
+`;
+
+const StyledCaption = styled(Caption)<Multiline>`
+    color: ${(props) => props.theme.color.onSurface.secondary};
+    ${multilineText}
+`;
+
+export default StyledCell;
