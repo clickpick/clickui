@@ -73,3 +73,5 @@ export interface Paddings {
 export default styled;
 export { css, keyframes, ThemeProvider };
 export type ThemeProps = styledComponents.ThemeProps<ThemeInterface>;
+
+export * from './helpers';
