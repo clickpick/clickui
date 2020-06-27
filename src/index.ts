@@ -11,5 +11,7 @@ export { default as List } from './components/List';
 export { default as Input } from './components/Input';
 export { default as Textarea } from './components/Textarea';
 
+export * from './theme/helpers';
+
 export { default as useInput } from './hooks/use-input';
 export { default as useFocus } from './hooks/use-focus';
