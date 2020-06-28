@@ -34,6 +34,7 @@ export const theme: ThemeInterface = {
         footnote: '14px',
         body: '16px',
         button: '16px',
+        headline: '30px',
     },
 
     fontWeight: {
