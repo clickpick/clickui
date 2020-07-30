@@ -4,7 +4,6 @@
 @import './dark_theme.css';
 
 @import "./atomics.css";
-@import "./components.css";
 
 body {
     font-family: sans-serif;
