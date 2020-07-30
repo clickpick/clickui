@@ -3,7 +3,7 @@ import React, {
     useRef, useLayoutEffect,
     forwardRef
 } from 'react';
-import cn from 'classnames';
+import styled from '../../theme';
 
 import Field, { FieldProps } from '../Field';
 
@@ -18,8 +18,7 @@ export function changeHeight(element: HTMLTextAreaElement | ChangeEvent<HTMLText
 }
 
 const Textarea: FC<TextareaProps> = forwardRef(({
-    className, style,
-    view, label, value, maxLength, error, hint, autofocus, aside,
+    view, label, value, maxLength, error, hint, autofocus, aside, style,
     onChange, triggerMaxLength,
     ...restProps
 }: TextareaProps, ref) => {
@@ -41,8 +40,6 @@ const Textarea: FC<TextareaProps> = forwardRef(({
 
     return (
         <Field
-            className={cn(className, 'Textarea')}
-            style={style}
             view={view}
             label={label}
             value={value}
@@ -52,10 +49,18 @@ const Textarea: FC<TextareaProps> = forwardRef(({
             autofocus={autofocus}
             aside={aside}
             triggerMaxLength={triggerMaxLength}
-            onChange={handleChange}>
-            <textarea className="reset-indent" {...restProps} ref={textareaRef} />
+            onChange={handleChange}
+            style={style}>
+            <Control {...restProps} ref={textareaRef} />
         </Field>
     );
 });
+
+const Control = styled.textarea`
+    margin: 0;
+    padding: 0;
+    resize: none;
+    outline: none;
+`;
 
 export default Textarea;
