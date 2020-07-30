@@ -79,7 +79,12 @@ export interface Paddings {
 }
 
 export default styled;
-export { createGlobalStyle, css, keyframes, ThemeProvider };
+export { css, keyframes, ThemeProvider };
 export type ThemeProps = styledComponents.ThemeProps<ThemeInterface>;
+
+export const GlobalStyle = createGlobalStyle`
+    font-family: sans-serif;
+    color: ${(props) => props.theme.color.onSurface.primary};
+`;
 
 export * from './helpers';
