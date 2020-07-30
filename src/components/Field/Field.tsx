@@ -1,10 +1,9 @@
 import React, {
     FC, CSSProperties, ReactNode, ReactElement,
-    useMemo, useRef, useEffect,
-    isValidElement, cloneElement,
-    memo
+    useRef, useEffect,
+    isValidElement, cloneElement
 } from 'react';
-import cn from 'classnames';
+import styled, { margin, padding } from '../../theme';
 
 import { HasClassName, HasChildren, HasOnChange } from '../../typings';
 
@@ -30,17 +29,13 @@ export interface FieldProps extends HasClassName, HasChildren {
 
 type Props = FieldProps & HasOnChange<HTMLElement>;
 
-const Field: FC<Props> = memo(({
-    className, view = 'default',
+const Field: FC<Props> = ({
+    view = 'default',
     value, autofocus, maxLength,
     children, label, aside, hint, error,
     onChange, triggerMaxLength,
     ...restProps
 }: Props) => {
-    const classNames = useMemo<string>(() =>
-        cn(className, 'Field', { [`Field--${view}`]: view }, 'Bs(bb) Bs(bb)--all D(b) padding-yellow--rl'),
-        [className, view]);
-
     const control = useInput(value, onChange);
     const [focus, focusHandler] = useFocus(!!autofocus);
     const controlRef = useRef<HTMLElement>(null);
@@ -57,101 +52,112 @@ const Field: FC<Props> = memo(({
         }
     }, [control.value, maxLength, triggerMaxLength]);
 
-    const labelView = useMemo<ReactNode>(() => {
-        if (!label) {
-            return null;
-        }
-
-        return (
-            <Caption
-                className={cn('Field__label', {
-                    'Field__label--focused': focus,
-                    'color-opacity--secondary': !focus && !!control.value
-                }, 'margin-aqua--bottom', 'padding-yellow--rl', 'D(ib)')}
-                children={label} />
-        );
-    }, [label, focus, control.value]);
-
-    const controlView = useMemo<ReactNode>(() => {
-        if (!isValidElement(children)) {
-            return null;
-        }
-
-        return cloneElement(children as ReactElement, {
+    const controlView = (isValidElement(children))
+        ? cloneElement(children as ReactElement, {
             ...children.props,
-            className: cn('Field__control body', children.props.className),
             maxLength,
             ...control,
             ...focusHandler
-        });
-    }, [children, maxLength, control, focusHandler]);
+        })
+        : null;
 
-    const asideView = useMemo<ReactNode>(() => {
-        if (!aside) {
-            return null;
-        }
-
-        return <Grid inline className="Field__aside margin-aqua--left" children={aside} />;
-    }, [aside]);
-
-    const counterView = useMemo<ReactNode>(() => {
-        if (maxLength === undefined) {
-            return null;
-        }
-
+    let counter = null;
+    if (maxLength !== undefined) {
         const hide = (maxLength < 10) ? false : control.value.length < maxLength - 10;
-        const max = control.value.length === maxLength
+        const max = control.value.length === maxLength;
 
-        return (
-            <Grid
-                container
-                justify="flex-end"
-                className={cn('Field__counter', {
-                    'Field__counter--hide': hide,
-                    'Field__counter--max': max
-                })}>
+        counter = (
+            <Counter container justify="flex-end" hide={hide} max={max}>
                 <Caption children={`${control.value.length}/${maxLength}`} />
-            </Grid>
+            </Counter>
         );
-    }, [maxLength, control.value]);
-
-    const bodyView = useMemo<ReactNode>(() => {
-        return (
-            <div className={cn('Field__body', 'padding-yellow', {
-                'Field__body--focused': focus,
-                'Field__body--error': error
-            })}>
-                <Grid container className="Field__body-in">
-                    {controlView}
-                    {asideView}
-                </Grid>
-
-                {counterView}
-            </div>
-        );
-    }, [focus, error, controlView, asideView, counterView]);
-
-    const hintView = useMemo<ReactNode>(() => {
-        if (!hint) {
-            return null;
-        }
-
-        return (
-            <Footnote
-                className={cn('Field__hint', 'margin-aqua--top', 'padding-yellow--rl', {
-                    'Field__hint--error': error
-                })}
-                children={hint} />
-        );
-    }, [hint, error]);
+    }
 
     return (
-        <label className={classNames} {...restProps}>
-            {labelView}
-            {bodyView}
-            {hintView}
+        <label {...restProps}>
+            {(label) && <Label children={label} focus={focus} />}
+
+            <Body view={view} focus={focus} error={error}>
+                <Grid container>
+                    {controlView}
+                    {(aside) && <Side inline children={aside} />}
+                </Grid>
+
+                {counter}
+            </Body>
+
+            {(hint) && <Hint children={hint} error={error} />}
         </label>
     );
-});
+};
 
-export default Field;
+const StyledField = styled(Field)``;
+
+const Label = styled(Caption) <{ focus?: boolean }>`
+    display: block;
+    ${margin('aqua', ['margin-bottom'])}
+    color: ${(props) => (props.focus) ? props.theme.color.primary : props.theme.color.onSurface.secondary};
+    transition-property: color, opacity;
+    transition: 150ms ease-in;
+`;
+
+const Body = styled(Grid) < { view: FieldProps['view']; focus?: boolean; error?: boolean; success?: boolean }>`
+    position: relative;
+    display: block;
+    ${padding('yellow', ['padding'])}
+    border-radius: 4px;
+    background-color: ${(props) => (props.view === 'promo' && !props.focus && !props.error && !props.success)
+        ? 'transparent'
+        : (props.error)
+            ? props.theme.color.errorSecondary
+            : (props.focus)
+                ? props.theme.color.secondary
+                : (props.success)
+                    ? props.theme.color.successSecondary
+                    : props.theme.color.surface.accent};
+    transition: background-color 150ms ease-in;
+
+    & input,
+    & textarea {
+        width: 100%;
+        height: 20px;
+
+        border: 0;
+
+        background-color: transparent;
+
+        font-size: ${(props) => props.theme.fontSize.body};
+        font-weight: ${(props) => props.theme.fontWeight.regular};
+        line-height: 20px;
+
+        overflow-y: hidden;
+        outline: none;
+    }
+
+    & input::placeholder,
+    & textarea::placeholder {
+        color: ${(props) => props.theme.color.onSurface.tertiary};
+    }
+`;
+
+const Counter = styled(Grid)<{ hide?: boolean; max?: boolean }>`
+    max-height: ${(props) => (props.hide) ? '0' : '20px'};
+    color: ${(props) => (props.max) ? props.theme.color.error : props.theme.color.onSurface.tertiary};
+    overflow: hidden;
+    transition-property: color, max-height;
+    transition: 100ms ease-in;
+`;
+
+const Side = styled(Grid)`
+    flex-shrink: 0;
+    ${margin('aqua', ['margin-left'])}
+`;
+
+const Hint = styled(Footnote)<{ error?: boolean }>`
+    ${margin('aqua', ['margin-top'])}
+    color: ${(props) => (props.error) ? props.theme.color.error : props.theme.color.onSurface.secondary};
+    transition-property: color, opacity;
+    transition: 150ms ease-in;
+`;
+
+export default StyledField;

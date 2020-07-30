@@ -32,6 +32,12 @@ export interface ThemeInterface {
 		success: string;
 		successSecondary: string;
 
+		surface: {
+			background: string;
+			surface: string;
+			accent: string;
+		};
+
 		white: string;
 		black: string;
 	};

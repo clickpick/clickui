@@ -25,6 +25,12 @@ export const theme: ThemeInterface = {
         success: '#3FA44B',
         successSecondary: 'rgba(63, 164, 75, 0.1)',
 
+        surface: {
+            background: '#f7f7f7',
+            surface: '#fff',
+            accent: 'rgba(0, 0, 0, 0.03)'
+        },
+
         white: '#FFF',
         black: '#000'
     },
