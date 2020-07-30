@@ -1,8 +1,8 @@
 import { ThemeProps, Margins, Paddings } from './index';
+import { createGlobalStyle } from './index';
 
 type MarginParameters = 'margin' | 'margin-top' | 'margin-right' | 'margin-bottom' | 'margin-left';
 type PaddingParameters = 'padding' | 'padding-top' | 'padding-right' | 'padding-bottom' | 'padding-left';
-
 
 // type Type<T extends boolean> = keyof Spacing[T extends true ? 'margins' : 'paddings'];
 // type Type<T extends boolean> = keyof (T extends true ? Margins : Paddings);
@@ -28,3 +28,8 @@ export const padding = (type: keyof Paddings, parameters: PaddingParameters[]) =
     const value = props.theme.spacing.paddings[type];
     return parameters.map((param) => `${param}: ${value}px;`).join('');
 };
+
+export const GlobalStyle = createGlobalStyle`
+    font-family: sans-serif;
+    color: ${(props) => props.theme.color.onSurface.primary};
+`;

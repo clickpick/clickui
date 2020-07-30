@@ -1,8 +1,9 @@
 import * as styledComponents from 'styled-components';
 
 const {
-  	default: styled,
-  	css,
+    default: styled,
+    createGlobalStyle,
+    css,
   	keyframes,
 	ThemeProvider
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<ThemeInterface>;
@@ -78,7 +79,7 @@ export interface Paddings {
 }
 
 export default styled;
-export { css, keyframes, ThemeProvider };
+export { createGlobalStyle, css, keyframes, ThemeProvider };
 export type ThemeProps = styledComponents.ThemeProps<ThemeInterface>;
 
 export * from './helpers';

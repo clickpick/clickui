@@ -1,5 +1,3 @@
-import './styles/index.css';
-
 export { default as Caption } from './components/Caption';
 export { default as Footnote } from './components/Footnote';
 export { default as Headline } from './components/Headline';
@@ -10,7 +8,7 @@ export { default as Grid } from './components/Grid';
 export { default as Input } from './components/Input';
 export { default as Textarea } from './components/Textarea';
 
-export { default as styled, css, keyframes, ThemeProvider, margin, padding } from './theme';
+export { default as styled, css, keyframes, ThemeProvider, GlobalStyle, margin, padding } from './theme';
 
 export { default as useInput } from './hooks/use-input';
 export { default as useFocus } from './hooks/use-focus';
