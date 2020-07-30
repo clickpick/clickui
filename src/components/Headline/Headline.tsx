@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, ReactNode, ElementType, useMemo, memo } from 'react';
+import React, { FC, HTMLAttributes, ReactNode, ElementType } from 'react';
 import styled from '../../theme';
 
 interface HeadlineProps extends HTMLAttributes<HTMLHeadingElement> {
@@ -7,21 +7,24 @@ interface HeadlineProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const Headline: FC<HeadlineProps> = ({ level, children, ...restProps }: HeadlineProps) => {
-    const Component = useMemo<ElementType>(() => {
-        switch (level) {
-            case '1':
-                return 'h1';
-            case '2':
-                return 'h2';
-            case '3':
-                return 'h3';
-        }
-    }, [level]);
+    let Component: ElementType = 'div';
+
+    switch (level) {
+        case '1':
+            Component = 'h1';
+            break;
+        case '2':
+            Component = 'h2';
+            break;
+        case '3':
+            Component = 'h3';
+            break;
+    }
 
     return <Component children={children} {...restProps} />;
 };
 
-const StyledHeadline = styled(memo(Headline))`
+const StyledHeadline = styled(Headline)`
     margin: 0;
 
     font-size: ${(props) => props.theme.fontSize.headline};

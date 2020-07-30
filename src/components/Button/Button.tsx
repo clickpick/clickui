@@ -1,7 +1,6 @@
 import React, {
     FC, ButtonHTMLAttributes, ReactNode, ElementType,
-    useMemo,
-    createElement, memo
+    createElement
 } from 'react';
 import styled from '../../theme';
 
@@ -25,46 +24,13 @@ const Button: FC<ButtonProps> = ({
     component = 'button',
     ...restProps
 }: ButtonProps) => {
-    const beforeView = useMemo<ReactNode>(() => {
-        if (before === undefined) {
-            return;
-        }
-
-        return (
-            <Side
-                as="span"
-                container
-                inline
-                alignItems="center"
-                children={before} />
-        );
-    }, [before]);
-
-    const asideView = useMemo<ReactNode>(() => {
-        if (aside === undefined) {
-            return;
-        }
-
-        return (
-            <Side
-                as="span"
-                container
-                inline
-                alignItems="center"
-                aside
-                children={aside} />
-        );
-    }, [aside]);
-
-    const contentView = useMemo<ReactNode>(() => {
-        return (
-            <Grid container justify="center" alignItems="center" as="span">
-                {beforeView}
-                {children}
-                {asideView}
-            </Grid>
-        );
-    }, [beforeView, children, asideView]);
+    const contentView = (
+        <Grid container justify="center" alignItems="center" as="span">
+            {(before) && <Side as="span" inline alignItems="center" children={before} />}
+            {children}
+            {(aside) && <Side as="span" inline alignItems="center" aside children={aside} />}
+        </Grid>
+    );
 
     return createElement(
         (restProps.href) ? 'a' : component,
@@ -73,7 +39,7 @@ const Button: FC<ButtonProps> = ({
     );
 };
 
-const StyledButton = styled(memo(Button))`
+const StyledButton = styled(Button)`
     ${CoreButton};
 
     width: ${(props) => (props.mobileFull) ? '100%' : 'auto'};
@@ -92,7 +58,7 @@ const StyledButton = styled(memo(Button))`
     }
 `;
 
-const Side = styled(Grid) <{ aside?: boolean }>`
+const Side = styled(Grid)<{ aside?: boolean }>`
     align-self: center;
     ${(props) => (props.aside) ? 'margin-left: 10px;' : 'margin-right: 10px;'}
 `;

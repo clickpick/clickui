@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, ReactText, memo } from 'react';
+import React, { FC, HTMLAttributes, ReactText } from 'react';
 import styled from '../../theme';
 
 import { CoreLabel, CoreLabelProps } from '../core/Label';
@@ -17,7 +17,7 @@ const Label: FC<LabelProps> = ({ priority, children, ...restProps }: LabelProps)
     );
 };
 
-const StyledLabel = styled(memo(Label))`
+const StyledLabel = styled(Label)`
     ${CoreLabel}
 
     padding-right: 4px;

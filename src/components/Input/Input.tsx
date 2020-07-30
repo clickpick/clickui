@@ -1,11 +1,11 @@
-import React, { FC, InputHTMLAttributes, memo } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import Field, { FieldProps } from '../Field';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>, FieldProps { }
 
-const Input: FC<InputProps> = memo(({
+const Input: FC<InputProps> = ({
     className, style,
     view, label, value, maxLength, error, hint, autofocus, aside,
     onChange, triggerMaxLength,
@@ -28,6 +28,6 @@ const Input: FC<InputProps> = memo(({
             <input type="text" {...restProps} />
         </Field>
     );
-});
+};
 
 export default Input;

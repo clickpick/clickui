@@ -1,7 +1,7 @@
 import React, {
     FC, InputHTMLAttributes, ChangeEvent,
-    useRef, useCallback, useLayoutEffect,
-    memo, forwardRef
+    useRef, useLayoutEffect,
+    forwardRef
 } from 'react';
 import cn from 'classnames';
 
@@ -17,7 +17,7 @@ export function changeHeight(element: HTMLTextAreaElement | ChangeEvent<HTMLText
     }
 }
 
-const Textarea: FC<TextareaProps> = memo(forwardRef(({
+const Textarea: FC<TextareaProps> = forwardRef(({
     className, style,
     view, label, value, maxLength, error, hint, autofocus, aside,
     onChange, triggerMaxLength,
@@ -25,13 +25,13 @@ const Textarea: FC<TextareaProps> = memo(forwardRef(({
 }: TextareaProps, ref) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-    const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         if (onChange) {
             onChange(e);
         }
 
         changeHeight(e);
-    }, [onChange]);
+    };
 
     useLayoutEffect(() => {
         if (textareaRef.current) {
@@ -56,6 +56,6 @@ const Textarea: FC<TextareaProps> = memo(forwardRef(({
             <textarea className="reset-indent" {...restProps} ref={textareaRef} />
         </Field>
     );
-}));
+});
 
 export default Textarea;
