@@ -1,8 +1,6 @@
 import React, { FC, InputHTMLAttributes } from 'react';
-import cn from 'classnames';
-import styled, { margin } from '../../theme';
-
 import { HasChildren } from '../../typings';
+import styled, { margin } from '../../theme';
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement>, HasChildren {
     controlSize?: 'small' | 'medium';
@@ -15,14 +13,10 @@ const Checkbox: FC<CheckboxProps> = ({
     children,
     ...restProps
 }: CheckboxProps) => {
-    const classNames = cn(className, 'Checkbox', {
-        [`Checkbox--${controlSize}`]: controlSize
-    });
-
     const styles = (fill) ? { ...style, '--checkbox_background': fill } : style;
 
     return (
-        <label className={classNames} style={styles}>
+        <label className={className} style={styles}>
             <input {...restProps} type="checkbox" />
             <CustomControl size={controlSize}>
                 <Check size={controlSize} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

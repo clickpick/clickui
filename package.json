@@ -1,6 +1,6 @@
 {
   "name": "@clickpick/clickui",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "clickui library",
   "main": "dist/clickui.js",
   "module": "dist/clickui.es.js",
@@ -18,9 +18,9 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "classnames": "^2.2.6",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -31,7 +31,6 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@svgr/rollup": "^5.3.1",
-    "@types/classnames": "^2.2.10",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
@@ -44,7 +43,6 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
-    "classnames": "^2.2.6",
     "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "^4.0.0",
