@@ -10,5 +10,5 @@ export { default as Textarea } from './components/Textarea';
 
 export { default as styled, css, keyframes, ThemeProvider, GlobalStyle, margin, padding } from './theme';
 
-export { default as useInput } from './hooks/use-input';
+export { useInput } from './hooks/useInput';
 export { useFocus } from './hooks/useFocus';

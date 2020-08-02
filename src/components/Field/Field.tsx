@@ -7,7 +7,7 @@ import styled, { margin, padding } from '../../theme';
 
 import { HasClassName, HasChildren, HasOnChange } from '../../typings';
 
-import useInput from '../../hooks/use-input';
+import { useInput } from '../../hooks/useInput';
 import { useFocus } from '../../hooks/useFocus';
 
 import Grid from '../Grid';
@@ -31,12 +31,12 @@ type Props = FieldProps & HasOnChange<HTMLElement>;
 
 const Field: FC<Props> = ({
     view = 'default',
-    value, autofocus, maxLength,
+    value: defaultValue, autofocus, maxLength,
     children, label, aside, hint, error,
     onChange, triggerMaxLength,
     ...restProps
 }: Props) => {
-    const control = useInput(value, onChange);
+    const [inputBind, value] = useInput(defaultValue, onChange);
     const [focusBind, focus] = useFocus(!!autofocus);
     const controlRef = useRef<HTMLElement>(null);
 
@@ -47,28 +47,28 @@ const Field: FC<Props> = ({
     }, [autofocus]);
 
     useEffect(() => {
-        if (maxLength !== undefined && triggerMaxLength && control.value.length === maxLength) {
+        if (maxLength !== undefined && triggerMaxLength && value.length === maxLength) {
             triggerMaxLength();
         }
-    }, [control.value, maxLength, triggerMaxLength]);
+    }, [value, maxLength, triggerMaxLength]);
 
     const controlView = (isValidElement(children))
         ? cloneElement(children as ReactElement, {
             ...children.props,
             maxLength,
-            ...control,
+            ...inputBind,
             ...focusBind
         })
         : null;
 
     let counter = null;
     if (maxLength !== undefined) {
-        const hide = (maxLength < 10) ? false : control.value.length < maxLength - 10;
-        const max = control.value.length === maxLength;
+        const hide = (maxLength < 10) ? false : value.length < maxLength - 10;
+        const max = value.length === maxLength;
 
         counter = (
             <Counter container justify="flex-end" hide={hide} max={max}>
-                <Caption children={`${control.value.length}/${maxLength}`} />
+                <Caption children={`${value.length}/${maxLength}`} />
             </Counter>
         );
     }
