@@ -1,19 +1,12 @@
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
-import { terser } from "rollup-plugin-terser";
-import postcss from 'rollup-plugin-postcss';
+import { terser } from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
 
 import pkg from './package.json';
-
-// postcss plugins
-import postcssImport from 'postcss-import';
-import cssnext from 'postcss-cssnext';
-import postcssCustomProperties from 'postcss-custom-properties';
-import cssnano from 'cssnano';
 
 export default {
     input: 'src/index.ts',
@@ -34,25 +27,6 @@ export default {
     external: ['styled-components'],
     plugins: [
         external(),
-        postcss({
-            plugins: [
-                postcssImport({
-                    path: ['src/styles']
-                }),
-                postcssCustomProperties(),
-                cssnext({
-                    features: {
-                        customProperties: false
-                    },
-                    warnForDuplicates: false
-                }),
-                cssnano()
-            ],
-            modules: false,
-            extract: true,
-            minimize: true,
-            sourceMap: false
-        }),
         url(),
         svgr(),
         resolve(),
