@@ -1,6 +1,4 @@
 import React, { FC, InputHTMLAttributes } from 'react';
-import cn from 'classnames';
-
 import Field, { FieldProps } from '../Field';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>, FieldProps { }
@@ -13,7 +11,7 @@ const Input: FC<InputProps> = ({
 }: InputProps) => {
     return (
         <Field
-            className={cn(className, 'Input')}
+            className={className}
             style={style}
             view={view}
             label={label}
