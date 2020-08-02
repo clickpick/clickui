@@ -8,7 +8,7 @@ import styled, { margin, padding } from '../../theme';
 import { HasClassName, HasChildren, HasOnChange } from '../../typings';
 
 import useInput from '../../hooks/use-input';
-import useFocus from '../../hooks/use-focus';
+import { useFocus } from '../../hooks/useFocus';
 
 import Grid from '../Grid';
 import Caption from '../Caption';
@@ -37,7 +37,7 @@ const Field: FC<Props> = ({
     ...restProps
 }: Props) => {
     const control = useInput(value, onChange);
-    const [focus, focusHandler] = useFocus(!!autofocus);
+    const [focusBind, focus] = useFocus(!!autofocus);
     const controlRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const Field: FC<Props> = ({
             ...children.props,
             maxLength,
             ...control,
-            ...focusHandler
+            ...focusBind
         })
         : null;
 
