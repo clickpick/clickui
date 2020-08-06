@@ -14,7 +14,11 @@ export { default as Textarea } from './components/Textarea';
 
 /* Theme */
 
-export { default as styled, css, keyframes, ThemeProvider, GlobalStyle, margin, padding } from './theme';
+export {
+    default as styled,
+    ThemeProvider, GlobalStyle,
+    css, keyframes, createGlobalStyle, margin, padding
+} from './theme';
 export { theme } from './theme/schema';
 
 /* Hooks */
