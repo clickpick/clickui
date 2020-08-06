@@ -79,7 +79,7 @@ export interface Paddings {
 }
 
 export default styled;
-export { css, keyframes, ThemeProvider };
+export { css, keyframes, createGlobalStyle, ThemeProvider };
 export type ThemeProps = styledComponents.ThemeProps<ThemeInterface>;
 
 export const GlobalStyle = createGlobalStyle`
