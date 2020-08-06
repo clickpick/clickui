@@ -19,6 +19,6 @@ export const CoreGrid = css<CoreGridProps>`
         ${(props.justify) ? `justify-content: ${props.justify};` : ''}
         ${(props.alignItems) ? `align-items: ${props.alignItems};` : ''}
         ${(props.alignContent) ? `align-content: ${props.alignContent};` : ''}
-        ${(props.zeroMinWidth) ? `min-width: 0;` : ''}
     `}
+    ${(props) => (props.zeroMinWidth) ? `min-width: 0;` : ''}
 `;
