@@ -21,7 +21,7 @@ const Cell: FC<CellProps> = ({ size, before, children, caption, after, multiline
         <Grid container alignItems="center" {...restProps} role={(expandable) ? 'button' : undefined}>
             {(before) && <Side container alignItems="center" children={before} />}
 
-            <Main zeroMinWidth>
+            <Main zeroMinWidth={!multiline}>
                 <Content children={children} multiline={multiline} />
                 {(caption) && <StyledCaption children={caption} multiline={multiline} />}
             </Main>
