@@ -42,6 +42,8 @@ storiesOf('Cell', module)
                         before={IconSample}
                         children="Sooooo long body text text text text text text"
                         caption="Sooooo long body text text text text text text"
+                        textPrimaryColor="blue"
+                        textSecondaryColor="green"
                         style={styles} />
                     <Cell
                         size="small"
