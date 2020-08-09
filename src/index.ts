@@ -7,6 +7,7 @@ export { default as Footnote } from './components/Footnote';
 export { default as Headline } from './components/Headline';
 export { default as Cell } from './components/Cell';
 export { default as Button } from './components/Button';
+export { default as IconButton } from './components/IconButton';
 export { default as Checkbox } from './components/Checkbox';
 export { default as Grid } from './components/Grid';
 export { default as Input } from './components/Input';
